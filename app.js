@@ -16,13 +16,21 @@
       sections: [
         ['My role', 'I developed this independent AI and machine learning project across the agent workflow, predictive model, API, interface, and evaluation.'],
         ['What I built', 'I built two specialized LangGraph agent branches with FAISS-based RAG retrieval and parameterized SQLite customer lookups. In local live mode, I integrated Gemini routing and tool calling. I added validated tool inputs, FastAPI REST endpoints, a Streamlit interface, and structured request logging.'],
-        ['How I checked it', 'I trained and tuned a Scikit-learn Random Forest using GridSearchCV and grouped cross-validation. On 635 held-out UCI Iranian Churn records, I achieved an F1 score of 0.856 and ROC-AUC of 0.979. I documented 143 passing automated tests and 30/30 offline evaluation cases, alongside limited live Gemini verification.'],
+        ['Model evaluation', 'I trained and tuned a Scikit-learn Random Forest using GridSearchCV and grouped cross-validation. On 635 held-out UCI Iranian Churn records, I achieved F1 = 0.856 and ROC-AUC = 0.979. These held-out dataset metrics are separate from the application verification below.'],
+        ['Automated tests · 23 October 2026', 'I recorded 181 passing automated tests with zero failures, errors, or skips. This suite includes the 31 mocked Gemini SDK contract cases and the 38 offline evaluation cases; I do not count those as additional tests. Mocked SDK responses test contracts and local tool behavior, not live Gemini decisions. I also recorded 42 passing Linux cloud/conversation regression tests on Ubuntu WSL, with no Gemini calls; this is not a Community Cloud deployment or load test.'],
+        ['Offline evaluation', 'I recorded 38/38 passing offline evaluation cases with zero Gemini provider calls. These checks exercise deterministic routing, SQL, model inference, vector retrieval, and rule-based orchestration. They do not establish live model answer quality.'],
+        ['Limited live Gemini verification', 'I recorded 3/3 passing model-information scenarios: a small live smoke set using three classification calls and one model-availability lookup. These scenarios execute no tools. I keep this evidence separate from mocked SDK contracts, offline evaluation, and broader end-to-end or production reliability claims.'],
         ['My stack', 'Python · LangGraph · Gemini API · FAISS · SQLite · Scikit-learn · FastAPI · Streamlit · Pydantic · Pytest']
       ],
-      note: 'My hosted demo runs offline. Gemini routing and live tool calling run in my local live mode. The model scores above describe the held-out dataset evaluation.',
+      note: 'My hosted demo uses deterministic offline routing and makes no Gemini calls. Gemini-powered routing and function calling are available in my local application. The linked verification was recorded on 23 October 2026; it is documented evidence, not a fresh rerun. The live smoke set is limited, and upstream deprecation warnings remain.',
       links: [
         ['Explore my source code', 'https://github.com/Amrafik/telecom-customer-intelligence-ai-assistant'],
-        ['Open my offline demo', 'https://amrafik-telecom-ai.streamlit.app/']
+        ['Open my offline demo', 'https://amrafik-telecom-ai.streamlit.app/'],
+        ['Verification report · 23 October 2026', 'https://github.com/Amrafik/telecom-customer-intelligence-ai-assistant/blob/437b0d9217d974fdab869ac94f4ed168a0b8e335/reports/model_info_verification.json'],
+        ['Automated test report', 'https://github.com/Amrafik/telecom-customer-intelligence-ai-assistant/blob/437b0d9217d974fdab869ac94f4ed168a0b8e335/reports/model_info_regression.xml'],
+        ['Offline evaluation cases', 'https://github.com/Amrafik/telecom-customer-intelligence-ai-assistant/blob/437b0d9217d974fdab869ac94f4ed168a0b8e335/reports/evaluation.json'],
+        ['Linux regression report', 'https://github.com/Amrafik/telecom-customer-intelligence-ai-assistant/blob/437b0d9217d974fdab869ac94f4ed168a0b8e335/reports/model_info_linux.xml'],
+        ['Limited live Gemini report', 'https://github.com/Amrafik/telecom-customer-intelligence-ai-assistant/blob/437b0d9217d974fdab869ac94f4ed168a0b8e335/reports/gemini_model_info_smoke.json']
       ]
     },
     hayah: {
@@ -181,7 +189,7 @@
   });
 
   const inspectContent = {
-    routing: ['I give each question a path.', 'I use two specialized LangGraph agent branches. Gemini routing and tool calling run in my local live mode; my hosted demo runs offline.'],
+    routing: ['I give each question a path.', 'I use two specialized LangGraph agent branches. Gemini routing and function calling run in my local application; my hosted demo uses deterministic offline routing with no Gemini calls.'],
     retrieval: ['I bring relevant context into the answer.', 'I use FAISS-based retrieval and embeddings in a RAG workflow to connect the assistant with reference material.'],
     customer: ['I keep customer lookups structured.', 'I use parameterized SQLite queries and validated tool inputs to retrieve customer information through structured calls.'],
     prediction: ['I check the model against held-out data.', 'I tuned a Random Forest with GridSearchCV and grouped cross-validation: F1 0.856 and ROC-AUC 0.979 on 635 held-out UCI Iranian Churn records.']
@@ -226,7 +234,7 @@
   const approachContent = {
     build: ['I connect the pieces into a working system: agent workflows, retrieval, structured tools, APIs, and a usable interface. My telecom assistant brings that work together.', 'Explore my AI assistant ↗'],
     evaluate: ['I evaluate AI-generated code for correctness, reasoning, edge cases, and instruction adherence. I also bring experience in function calling, voice evaluation, VQA, and annotation.', 'Explore my evaluation work ↗'],
-    prove: ['I make the evidence visible. For my telecom assistant, I documented 143 passing automated tests, 30/30 offline evaluation cases, and model results on 635 held-out records.', 'See my project evidence ↗']
+    prove: ['I make the evidence visible. My 23 October 2026 verification records 181 automated tests with zero failures (including 31 mocked SDK cases and the 38/38 offline cases), 42 Linux regressions on Ubuntu WSL, and 3/3 limited live Gemini model-information scenarios. I keep these distinct from model results on 635 held-out records.', 'See my project evidence ↗']
   };
   const approachButton = document.getElementById('approach-project');
   const approachButtons = [...document.querySelectorAll('button[data-approach]')];
